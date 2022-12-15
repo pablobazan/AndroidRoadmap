@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AndroidRoadmap</string>
+    <string name="title_activity_jetpack_compose_catalog">JetpackComposeCatalog</string>
+    <string name="title_activity_compose_catalog">ComposeCatalog</string>
+    <string name="title_activity_bases_android">BasesAndroid</string>
+    <string name="title_activity_solid">Solid</string>
+    <string name="title_activity_srp">SRP</string>
+    <string name="title_activity_ocpactivity">OCPActivity</string>
+    <string name="title_activity_liskov">LiskovActivity</string>
+    <string name="title_activity_dipactivity">DIPActivity</string>
+    <string name="title_activity_ispactivity">ISPActivity</string>
+</resources>

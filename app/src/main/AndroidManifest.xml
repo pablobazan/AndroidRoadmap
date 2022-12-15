@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AndroidRoadmap"
+        tools:targetApi="31">
+        <activity
+            android:name=".solid.presentation.ISPActivity"
+            android:exported="false"
+            android:label="@string/title_activity_ispactivity"
+            android:theme="@style/Theme.AndroidRoadmap">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".solid.presentation.DIPActivity"
+            android:exported="false"
+            android:label="@string/title_activity_dipactivity"
+            android:theme="@style/Theme.AndroidRoadmap">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".solid.presentation.LiskovActivity"
+            android:exported="false"
+            android:label="@string/title_activity_liskov"
+            android:theme="@style/Theme.AndroidRoadmap">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".solid.presentation.OCPActivity"
+            android:exported="false"
+            android:label="@string/title_activity_ocpactivity"
+            android:theme="@style/Theme.AndroidRoadmap">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".solid.presentation.SRPActivity"
+            android:exported="false"
+            android:label="@string/title_activity_srp"
+            android:theme="@style/Theme.AndroidRoadmap">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".solid.presentation.SolidActivity"
+            android:exported="false"
+            android:label="@string/title_activity_solid"
+            android:theme="@style/Theme.AndroidRoadmap">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".bases.BasesAndroid"
+            android:exported="false"
+            android:label="@string/title_activity_bases_android"
+            android:theme="@style/Theme.AndroidRoadmap">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".compose.ComposeCatalogActivity"
+            android:exported="false"
+            android:label="@string/title_activity_compose_catalog"
+            android:theme="@style/Theme.AndroidRoadmap">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AndroidRoadmap">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+    </application>
+
+</manifest>
