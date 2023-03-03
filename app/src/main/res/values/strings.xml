@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">AndroidRoadmap</string>
+    <string name="app_name">Android Roadmap</string>
+    <string name="solid">SOLID</string>
+
     <string name="title_activity_jetpack_compose_catalog">JetpackComposeCatalog</string>
     <string name="title_activity_compose_catalog">ComposeCatalog</string>
     <string name="title_activity_bases_android">BasesAndroid</string>

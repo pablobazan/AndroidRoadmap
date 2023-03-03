@@ -9,14 +9,22 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.example.androidroadmap.core.Page
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.androidroadmap.core.Routes
-import com.example.androidroadmap.core.NavigationUtils
+import com.example.androidroadmap.core.Utils.isNotLastItemInList
 import com.example.androidroadmap.core.widgets.ButtonMenu
+import com.example.androidroadmap.core.widgets.Title
+import com.example.androidroadmap.solid.presentation.DIPPage
+import com.example.androidroadmap.solid.presentation.ISPPage
+import com.example.androidroadmap.solid.presentation.LiskovPage
+import com.example.androidroadmap.solid.presentation.OCPPage
+import com.example.androidroadmap.solid.presentation.SRPPage
+import com.example.androidroadmap.solid.presentation.SolidPage
 import com.example.androidroadmap.ui.theme.AndroidRoadmapTheme
 
 class MainActivity : ComponentActivity() {
@@ -25,23 +33,50 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AndroidRoadmapTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Column(
-                        Modifier.fillMaxWidth(),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(
-                            text = "Roadmap Android",
-                            Modifier.padding(top = 20.dp),
-                            fontSize = 24.sp
-                        )
-                        MenuList(Routes.pages)
+                val navController = rememberNavController()
+                NavHost(navController = navController, startDestination = Routes.HOME_PAGE) {
+                    composable(Routes.HOME_PAGE) { HomePage(listOfPages = Routes.initialPages, navController = navController) }
+                    composable(Routes.SOLID_PAGE) { SolidPage(navController = navController) }
+                    composable(Routes.OCP_PAGE) { OCPPage() }
+                    composable(Routes.LSP_PAGE) { LiskovPage() }
+                    composable(Routes.ISP_PAGE) { ISPPage() }
+                    composable(Routes.DIP_PAGE) { DIPPage() }
+                    composable(Routes.SRP_PAGE) { SRPPage() }
 
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun HomePage(listOfPages: List<String>, navController: NavHostController) {
+    Scaffold(
+    ) { padding ->
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .padding(padding),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Title(
+                text = stringResource(id = R.string.app_name)
+            )
+            Spacer(modifier = Modifier.fillMaxHeight(0.05f))
+            LazyColumn(
+                Modifier.padding(vertical = 20.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                items(listOfPages.size) { index ->
+                    ButtonMenu(text = listOfPages[index], onClick = {
+                        navController.navigate(listOfPages[index])
+                    })
+                    Spacer(modifier = Modifier.height(10.dp))
+                    if (isNotLastItemInList(index, listOfPages)) {
+                        Divider(Modifier.fillMaxWidth(0.9f), thickness = 1.dp)
+                        Spacer(modifier = Modifier.height(10.dp))
                     }
+
                 }
             }
         }
@@ -49,36 +84,3 @@ class MainActivity : ComponentActivity() {
 }
 
 
-@Composable
-fun MenuList(listOfPages: List<Page>) {
-    val context = LocalContext.current
-    LazyColumn(
-        Modifier.padding(vertical = 20.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        items(listOfPages.size) { index ->
-            ButtonMenu(
-                text = listOfPages[index].name,
-                onClick = {
-                    NavigationUtils.startActivity(
-                        context,
-                        listOfPages[index].className
-                    )
-                })
-        }
-    }
-}
-
-
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    AndroidRoadmapTheme {
-        Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(text = "Roadmap Android", Modifier.padding(top = 20.dp), fontSize = 24.sp)
-            MenuList(Routes.pages)
-
-        }
-    }
-}
