@@ -67,7 +67,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".bases.BasesAndroid"
+            android:name=".basesandroid.BasesAndroid"
             android:exported="false"
             android:label="@string/title_activity_bases_android"
             android:theme="@style/Theme.AndroidRoadmap">

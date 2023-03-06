@@ -7,6 +7,12 @@ object Routes {
     const val SOLID_PAGE = "SOLID"
     const val COMPOSE_PAGE = "Jetpack Compose"
     const val BASES_ANDROID_PAGE = "Bases Android"
+    const val POO = "POO"
+
+    //BasesAndroid
+    const val MVVM = "MVVM"
+    const val LIFECYCLE = "Lifecycle"
+
 
     //SOLID
     const val SRP_PAGE = "SRP"
@@ -15,10 +21,12 @@ object Routes {
     const val ISP_PAGE = "ISP"
     const val DIP_PAGE = "DIP"
 
-
-
     val initialPages = listOf(
-        SOLID_PAGE, COMPOSE_PAGE, BASES_ANDROID_PAGE
+        SOLID_PAGE, BASES_ANDROID_PAGE, POO, COMPOSE_PAGE
+    )
+
+    val BasesAndroidPages = listOf(
+        MVVM, LIFECYCLE
     )
 }
 

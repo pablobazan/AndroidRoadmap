@@ -15,10 +15,15 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.androidroadmap.basesandroid.BasesAndroidPage
+import com.example.androidroadmap.basesandroid.mvvm.LoginPage
+import com.example.androidroadmap.basesandroid.mvvm.LoginViewModel
+import com.example.androidroadmap.compose.ComposeCatalogPage
 import com.example.androidroadmap.core.Routes
 import com.example.androidroadmap.core.Utils.isNotLastItemInList
 import com.example.androidroadmap.core.widgets.ButtonMenu
 import com.example.androidroadmap.core.widgets.Title
+import com.example.androidroadmap.poo.POOPage
 import com.example.androidroadmap.solid.presentation.DIPPage
 import com.example.androidroadmap.solid.presentation.ISPPage
 import com.example.androidroadmap.solid.presentation.LiskovPage
@@ -35,13 +40,29 @@ class MainActivity : ComponentActivity() {
             AndroidRoadmapTheme {
                 val navController = rememberNavController()
                 NavHost(navController = navController, startDestination = Routes.HOME_PAGE) {
-                    composable(Routes.HOME_PAGE) { HomePage(listOfPages = Routes.initialPages, navController = navController) }
+
+                    composable(Routes.HOME_PAGE) {
+                        HomePage(listOfPages = Routes.initialPages, navController = navController)
+                    }
+
+                    composable(Routes.BASES_ANDROID_PAGE) {
+                        BasesAndroidPage(
+                            listOfPages = Routes.BasesAndroidPages,
+                            navController = navController
+                        )
+                    }
+
+                    composable(Routes.POO) { POOPage(navController = navController) }
+                    composable(Routes.COMPOSE_PAGE) { ComposeCatalogPage() }
+
                     composable(Routes.SOLID_PAGE) { SolidPage(navController = navController) }
                     composable(Routes.OCP_PAGE) { OCPPage() }
                     composable(Routes.LSP_PAGE) { LiskovPage() }
                     composable(Routes.ISP_PAGE) { ISPPage() }
                     composable(Routes.DIP_PAGE) { DIPPage() }
                     composable(Routes.SRP_PAGE) { SRPPage() }
+
+                    composable(Routes.MVVM) { LoginPage(LoginViewModel()) }
 
                 }
             }

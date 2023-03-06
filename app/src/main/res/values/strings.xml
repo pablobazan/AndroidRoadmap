@@ -2,9 +2,9 @@
     <string name="app_name">Android Roadmap</string>
     <string name="solid">SOLID</string>
 
-    <string name="title_activity_jetpack_compose_catalog">JetpackComposeCatalog</string>
+    <string name="title_activity_jetpack_compose_catalog">Jetpack Compose Catalog</string>
     <string name="title_activity_compose_catalog">ComposeCatalog</string>
-    <string name="title_activity_bases_android">BasesAndroid</string>
+    <string name="title_activity_bases_android">Bases Android</string>
     <string name="title_activity_solid">Solid</string>
     <string name="title_activity_srp">SRP</string>
     <string name="title_activity_ocpactivity">OCPActivity</string>
