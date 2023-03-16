@@ -1,35 +1,30 @@
-package com.example.androidroadmap.basesandroid.mvvm
+package com.example.androidroadmap.basesandroid.mvvm.presentation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Switch
-import androidx.compose.material.SwitchColors
 import androidx.compose.material.SwitchDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -39,8 +34,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androidroadmap.R
-import com.example.androidroadmap.basesandroid.mvvm.widgets.LoginEmailField
-import com.example.androidroadmap.basesandroid.mvvm.widgets.LoginPasswordField
+import com.example.androidroadmap.basesandroid.mvvm.presentation.widgets.LoginEmailField
+import com.example.androidroadmap.basesandroid.mvvm.presentation.widgets.LoginPasswordField
 
 @Composable
 fun LoginPage(loginViewModel: LoginViewModel) {
@@ -49,50 +44,75 @@ fun LoginPage(loginViewModel: LoginViewModel) {
      * Figma design: https://www.figma.com/file/pIv2UEL3Ac4TbKkshmC82Q/Real-Estate-App-%7C-Login-and-Signup-screen-%7C-Ui-Design-(Community)?node-id=1%3A11&t=CL0EYzJ8pz6j0yMn-0
      */
 
-    val email: String by loginViewModel.email.observeAsState(initial = "")
-    val password: String by loginViewModel.password.observeAsState(initial = "")
-    val isLoginEnable: Boolean by loginViewModel.isLoginEnable.observeAsState(initial = false)
-    val isRememberMe: Boolean by loginViewModel.rememberMeSwitch.observeAsState(initial = false)
-
+    val isLoading: Boolean by loginViewModel.isLoading.observeAsState(false)
     Background()
     Scaffold(
         modifier = Modifier.padding(horizontal = 28.dp),
         backgroundColor = Color.Transparent
     ) { padding ->
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight()
-                .padding(padding),
-            horizontalAlignment = Alignment.Start,
+        Content(loginViewModel = loginViewModel, padding = padding)
+    }
+    if (isLoading) Loading()
+}
 
-            ) {
-            Spacer(modifier = Modifier.fillMaxHeight(0.2f))
-            Text(
-                modifier = Modifier.align(alignment = Alignment.CenterHorizontally),
-                text = "Login",
-                color = Color.White,
-                fontSize = 30.sp,
-                fontWeight = FontWeight.Bold
-            )
-            Spacer(modifier = Modifier.fillMaxHeight(0.05f))
-            LoginEmailField(email = email, onTextChanged = { loginViewModel.onLoginChanged(it, password) })
-            Spacer(modifier = Modifier.fillMaxHeight(0.05f))
-            LoginPasswordField(password = password, onTextChanged = { loginViewModel.onLoginChanged(email, it) })
-            Spacer(modifier = Modifier.fillMaxHeight(0.02f))
-            LoginSwitch(checked = isRememberMe, onSwitchChange = { loginViewModel.onRememberMeSwitchChanged(it) })
-            Spacer(modifier = Modifier.fillMaxHeight(0.08f))
-            LoginButton(loginEnable = isLoginEnable)
+@Composable
+private fun Content(loginViewModel: LoginViewModel, padding: PaddingValues) {
 
-        }
+    val email: String by loginViewModel.email.observeAsState(initial = "")
+    val password: String by loginViewModel.password.observeAsState(initial = "")
+    val isLoginEnable: Boolean by loginViewModel.isLoginEnable.observeAsState(initial = false)
+    val isRememberMe: Boolean by loginViewModel.rememberMeSwitch.observeAsState(initial = false)
+
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight()
+            .padding(padding),
+        horizontalAlignment = Alignment.Start,
+
+        ) {
+        Spacer(modifier = Modifier.fillMaxHeight(0.2f))
+        Text(
+            modifier = Modifier.align(alignment = Alignment.CenterHorizontally),
+            text = "Login",
+            color = Color.White,
+            fontSize = 30.sp,
+            fontWeight = FontWeight.Bold
+        )
+        Spacer(modifier = Modifier.fillMaxHeight(0.05f))
+        LoginEmailField(email = email, onTextChanged = { loginViewModel.onLoginChanged(it, password) })
+        Spacer(modifier = Modifier.fillMaxHeight(0.05f))
+        LoginPasswordField(password = password, onTextChanged = { loginViewModel.onLoginChanged(email, it) })
+        Spacer(modifier = Modifier.fillMaxHeight(0.02f))
+        LoginSwitch(checked = isRememberMe, onSwitchChange = { loginViewModel.onRememberMeSwitchChanged(it) })
+        Spacer(modifier = Modifier.fillMaxHeight(0.08f))
+        LoginButton(isLoginEnable = isLoginEnable, loginViewModel)
+
     }
 }
 
 @Composable
-fun LoginButton(loginEnable: Boolean) {
+private fun Loading() {
+    Box(
+        Modifier
+            .fillMaxSize()
+            .background(Color((0x4FFFFFFF)))
+
+    ) {
+        CircularProgressIndicator(
+            Modifier
+                .align(Alignment.Center),
+            color = Color.White,
+        )
+    }
+}
+
+@Composable
+fun LoginButton(isLoginEnable: Boolean, loginViewModel: LoginViewModel) {
     Button(
-        onClick = { },
-        enabled = loginEnable,
+        onClick = { loginViewModel.onLoginSelected() },
+        enabled = isLoginEnable,
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight(0.18f),
@@ -173,10 +193,4 @@ fun Background() {
         )
 
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    LoginPage(loginViewModel = LoginViewModel())
 }

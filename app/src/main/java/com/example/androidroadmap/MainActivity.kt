@@ -3,6 +3,7 @@ package com.example.androidroadmap
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
@@ -16,8 +17,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.androidroadmap.basesandroid.BasesAndroidPage
-import com.example.androidroadmap.basesandroid.mvvm.LoginPage
-import com.example.androidroadmap.basesandroid.mvvm.LoginViewModel
+import com.example.androidroadmap.basesandroid.mvvm.presentation.LoginPage
+import com.example.androidroadmap.basesandroid.mvvm.presentation.LoginViewModel
 import com.example.androidroadmap.compose.ComposeCatalogPage
 import com.example.androidroadmap.core.Routes
 import com.example.androidroadmap.core.Utils.isNotLastItemInList
@@ -31,8 +32,12 @@ import com.example.androidroadmap.solid.presentation.OCPPage
 import com.example.androidroadmap.solid.presentation.SRPPage
 import com.example.androidroadmap.solid.presentation.SolidPage
 import com.example.androidroadmap.ui.theme.AndroidRoadmapTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    private val loginViewModel : LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,7 +67,7 @@ class MainActivity : ComponentActivity() {
                     composable(Routes.DIP_PAGE) { DIPPage() }
                     composable(Routes.SRP_PAGE) { SRPPage() }
 
-                    composable(Routes.MVVM) { LoginPage(LoginViewModel()) }
+                    composable(Routes.MVVM) { LoginPage(loginViewModel) }
 
                 }
             }

@@ -1,4 +1,4 @@
-package com.example.androidroadmap.basesandroid.mvvm.widgets
+package com.example.androidroadmap.basesandroid.mvvm.presentation.widgets
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
