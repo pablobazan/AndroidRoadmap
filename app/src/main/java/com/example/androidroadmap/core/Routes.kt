@@ -4,6 +4,7 @@ object Routes {
 
     const val HOME_PAGE = "Home"
 
+    //Home
     const val SOLID_PAGE = "SOLID"
     const val COMPOSE_PAGE = "Jetpack Compose"
     const val BASES_ANDROID_PAGE = "Bases Android"
@@ -20,6 +21,10 @@ object Routes {
     const val LSP_PAGE = "LSP"
     const val ISP_PAGE = "ISP"
     const val DIP_PAGE = "DIP"
+
+    //Compose
+    const val COMPONENTS_PAGE = "Componentes"
+    const val ANIMATIONS_PAGE = "Animaciones"
 
     val initialPages = listOf(
         SOLID_PAGE, BASES_ANDROID_PAGE, POO, COMPOSE_PAGE

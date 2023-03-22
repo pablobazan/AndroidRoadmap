@@ -1,4 +1,4 @@
-package com.example.androidroadmap.compose
+package com.example.androidroadmap.compose.catalog
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -17,8 +17,7 @@ import com.example.androidroadmap.core.widgets.Title
 @Composable
 fun ComposeCatalogPage() {
 
-    Scaffold(
-    ) { padding ->
+    Scaffold { padding ->
         Column(
             Modifier
                 .fillMaxWidth()

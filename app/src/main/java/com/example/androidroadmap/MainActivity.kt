@@ -19,7 +19,9 @@ import androidx.navigation.compose.rememberNavController
 import com.example.androidroadmap.basesandroid.BasesAndroidPage
 import com.example.androidroadmap.basesandroid.mvvm.presentation.LoginPage
 import com.example.androidroadmap.basesandroid.mvvm.presentation.LoginViewModel
-import com.example.androidroadmap.compose.ComposeCatalogPage
+import com.example.androidroadmap.compose.ComposePage
+import com.example.androidroadmap.compose.animations.ComposeAnimationsPage
+import com.example.androidroadmap.compose.catalog.ComposeCatalogPage
 import com.example.androidroadmap.core.Routes
 import com.example.androidroadmap.core.Utils.isNotLastItemInList
 import com.example.androidroadmap.core.widgets.ButtonMenu
@@ -37,7 +39,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    private val loginViewModel : LoginViewModel by viewModels()
+    private val loginViewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,16 +52,24 @@ class MainActivity : ComponentActivity() {
                         HomePage(listOfPages = Routes.initialPages, navController = navController)
                     }
 
+                    //Bases Android
                     composable(Routes.BASES_ANDROID_PAGE) {
                         BasesAndroidPage(
                             listOfPages = Routes.BasesAndroidPages,
                             navController = navController
                         )
                     }
+                    composable(Routes.MVVM) { LoginPage(loginViewModel) }
 
+                    //POO
                     composable(Routes.POO) { POOPage(navController = navController) }
-                    composable(Routes.COMPOSE_PAGE) { ComposeCatalogPage() }
 
+                    //Compose
+                    composable(Routes.COMPOSE_PAGE) { ComposePage(navController = navController) }
+                    composable(Routes.COMPONENTS_PAGE) { ComposeCatalogPage() }
+                    composable(Routes.ANIMATIONS_PAGE) { ComposeAnimationsPage() }
+
+                    //SOLID
                     composable(Routes.SOLID_PAGE) { SolidPage(navController = navController) }
                     composable(Routes.OCP_PAGE) { OCPPage() }
                     composable(Routes.LSP_PAGE) { LiskovPage() }
@@ -67,7 +77,6 @@ class MainActivity : ComponentActivity() {
                     composable(Routes.DIP_PAGE) { DIPPage() }
                     composable(Routes.SRP_PAGE) { SRPPage() }
 
-                    composable(Routes.MVVM) { LoginPage(loginViewModel) }
 
                 }
             }
@@ -77,8 +86,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun HomePage(listOfPages: List<String>, navController: NavHostController) {
-    Scaffold(
-    ) { padding ->
+    Scaffold { padding ->
         Column(
             Modifier
                 .fillMaxWidth()
