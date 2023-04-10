@@ -1,4 +1,4 @@
-package com.example.androidroadmap.compose
+package com.example.androidroadmap.designpatterns
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,14 +15,13 @@ import com.example.androidroadmap.core.Routes
 import com.example.androidroadmap.core.widgets.MenuList
 import com.example.androidroadmap.core.widgets.Title
 
-
 @Composable
-fun ComposePage(navController: NavHostController) {
+fun DesignPatternsPage(navController: NavHostController) {
 
     val listOfPages = listOf(
-        Page("Componentes", Routes.COMPONENTS_PAGE),
-        Page("Animaciones", Routes.ANIMATIONS_PAGE),
-
+        Page("Factory Method", Routes.FACTORY_PAGE),
+        Page("Abstract Factory", Routes.ABSTRACT_FACTORY_PAGE),
+        Page("Builder", Routes.BUILDER_PAGE),
     )
 
 
@@ -34,7 +33,7 @@ fun ComposePage(navController: NavHostController) {
                 .padding(padding),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Title(text = stringResource(id = R.string.solid))
+            Title(text = stringResource(id = R.string.design_patterns))
             MenuList(listOfPages = listOfPages, navController = navController)
         }
     }

@@ -48,10 +48,10 @@ abstract class Exception {
     }
 }
 
-class InvalidUserException : Exception() {}
+class InvalidUserException : Exception()
 
-class InvalidPasswordException : Exception() {}
+class InvalidPasswordException : Exception()
 
-class DuplicatedEmailException : Exception() {}
+class DuplicatedEmailException : Exception()
 
-class DisabledUserException : Exception() {}
+class DisabledUserException : Exception()

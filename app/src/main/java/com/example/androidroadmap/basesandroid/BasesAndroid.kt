@@ -23,8 +23,7 @@ import com.example.androidroadmap.core.widgets.Title
 @Composable
 fun BasesAndroidPage(listOfPages: List<String>, navController: NavHostController) {
 
-    Scaffold(
-    ) { padding ->
+    Scaffold { padding ->
         Column(
             Modifier
                 .fillMaxWidth()

@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Android Roadmap</string>
     <string name="solid">SOLID</string>
+    <string name="design_patterns">Patrones de diseño</string>
+
 
     <string name="title_activity_jetpack_compose_catalog">Jetpack Compose Catalog</string>
     <string name="title_activity_compose_catalog">ComposeCatalog</string>

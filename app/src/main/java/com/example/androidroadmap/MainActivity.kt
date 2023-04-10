@@ -26,6 +26,10 @@ import com.example.androidroadmap.core.Routes
 import com.example.androidroadmap.core.Utils.isNotLastItemInList
 import com.example.androidroadmap.core.widgets.ButtonMenu
 import com.example.androidroadmap.core.widgets.Title
+import com.example.androidroadmap.designpatterns.DesignPatternsPage
+import com.example.androidroadmap.designpatterns.creational_patterns.AbstractFactory
+import com.example.androidroadmap.designpatterns.creational_patterns.Builder
+import com.example.androidroadmap.designpatterns.creational_patterns.FactoryMethod
 import com.example.androidroadmap.poo.POOPage
 import com.example.androidroadmap.solid.presentation.DIPPage
 import com.example.androidroadmap.solid.presentation.ISPPage
@@ -77,40 +81,47 @@ class MainActivity : ComponentActivity() {
                     composable(Routes.DIP_PAGE) { DIPPage() }
                     composable(Routes.SRP_PAGE) { SRPPage() }
 
+                    //Design Patterns
+                    composable(Routes.DESIGN_PATTERNS) {
+                        DesignPatternsPage(navController = navController)
 
+                    }
+                    composable(Routes.FACTORY_PAGE) { FactoryMethod() }
+                    composable(Routes.ABSTRACT_FACTORY_PAGE) { AbstractFactory() }
+                    composable(Routes.BUILDER_PAGE) { Builder() }
                 }
             }
         }
     }
-}
 
-@Composable
-fun HomePage(listOfPages: List<String>, navController: NavHostController) {
-    Scaffold { padding ->
-        Column(
-            Modifier
-                .fillMaxWidth()
-                .padding(padding),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Title(
-                text = stringResource(id = R.string.app_name)
-            )
-            Spacer(modifier = Modifier.fillMaxHeight(0.05f))
-            LazyColumn(
-                Modifier.padding(vertical = 20.dp),
+    @Composable
+    fun HomePage(listOfPages: List<String>, navController: NavHostController) {
+        Scaffold { padding ->
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(padding),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                items(listOfPages.size) { index ->
-                    ButtonMenu(text = listOfPages[index], onClick = {
-                        navController.navigate(listOfPages[index])
-                    })
-                    Spacer(modifier = Modifier.height(10.dp))
-                    if (isNotLastItemInList(index, listOfPages)) {
-                        Divider(Modifier.fillMaxWidth(0.9f), thickness = 1.dp)
+                Title(
+                    text = stringResource(id = R.string.app_name)
+                )
+                Spacer(modifier = Modifier.fillMaxHeight(0.05f))
+                LazyColumn(
+                    Modifier.padding(vertical = 20.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    items(listOfPages.size) { index ->
+                        ButtonMenu(text = listOfPages[index], onClick = {
+                            navController.navigate(listOfPages[index])
+                        })
                         Spacer(modifier = Modifier.height(10.dp))
-                    }
+                        if (isNotLastItemInList(index, listOfPages)) {
+                            Divider(Modifier.fillMaxWidth(0.9f), thickness = 1.dp)
+                            Spacer(modifier = Modifier.height(10.dp))
+                        }
 
+                    }
                 }
             }
         }

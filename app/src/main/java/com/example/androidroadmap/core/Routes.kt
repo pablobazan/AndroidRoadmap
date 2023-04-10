@@ -9,11 +9,11 @@ object Routes {
     const val COMPOSE_PAGE = "Jetpack Compose"
     const val BASES_ANDROID_PAGE = "Bases Android"
     const val POO = "POO"
+    const val DESIGN_PATTERNS = "Patrones de Diseño"
 
     //BasesAndroid
     const val MVVM = "MVVM"
     const val LIFECYCLE = "Lifecycle"
-
 
     //SOLID
     const val SRP_PAGE = "SRP"
@@ -26,8 +26,19 @@ object Routes {
     const val COMPONENTS_PAGE = "Componentes"
     const val ANIMATIONS_PAGE = "Animaciones"
 
+    //Design Patterns
+    const val FACTORY_PAGE = "Factory Method"
+    const val ABSTRACT_FACTORY_PAGE = "Abstract Factory"
+    const val SINGLETON_PAGE = "Singleton"
+    const val BUILDER_PAGE = "Builder"
+    const val PROTOTYPE_PAGE = "Prototype"
+
     val initialPages = listOf(
-        SOLID_PAGE, BASES_ANDROID_PAGE, POO, COMPOSE_PAGE
+        SOLID_PAGE,
+        BASES_ANDROID_PAGE,
+        POO,
+        COMPOSE_PAGE,
+        DESIGN_PATTERNS
     )
 
     val BasesAndroidPages = listOf(
