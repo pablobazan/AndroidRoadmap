@@ -30,6 +30,8 @@ import com.example.androidroadmap.designpatterns.DesignPatternsPage
 import com.example.androidroadmap.designpatterns.creational_patterns.AbstractFactory
 import com.example.androidroadmap.designpatterns.creational_patterns.Builder
 import com.example.androidroadmap.designpatterns.creational_patterns.FactoryMethod
+import com.example.androidroadmap.designpatterns.creational_patterns.Prototype
+import com.example.androidroadmap.designpatterns.creational_patterns.Singleton
 import com.example.androidroadmap.poo.POOPage
 import com.example.androidroadmap.solid.presentation.DIPPage
 import com.example.androidroadmap.solid.presentation.ISPPage
@@ -89,6 +91,8 @@ class MainActivity : ComponentActivity() {
                     composable(Routes.FACTORY_PAGE) { FactoryMethod() }
                     composable(Routes.ABSTRACT_FACTORY_PAGE) { AbstractFactory() }
                     composable(Routes.BUILDER_PAGE) { Builder() }
+                    composable(Routes.PROTOTYPE_PAGE) { Prototype() }
+                    composable(Routes.SINGLETON_PAGE) { Singleton() }
                 }
             }
         }

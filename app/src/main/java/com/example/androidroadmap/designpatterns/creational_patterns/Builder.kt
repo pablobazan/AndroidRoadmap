@@ -20,7 +20,6 @@ import com.example.androidroadmap.core.widgets.ButtonMenu
 
 @Composable
 fun Builder() {
-
     val pizzaBuilder = Pizza.Builder()
     val pizzaDirector = PizzaDirector(pizzaBuilder)
     pizzaDirector.constructMargaritaPizza()
@@ -31,7 +30,7 @@ fun Builder() {
     Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
         Column(
             Modifier.padding(top = 20.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             ButtonMenu(
                 text = "Construct pizza with Builder and Director",
@@ -48,7 +47,6 @@ fun Builder() {
             )
             Spacer(modifier = Modifier.fillMaxHeight(0.05f))
             Text(text = "Pizza name: $pizzaName")
-
         }
     }
 }
@@ -62,7 +60,7 @@ data class Pizza(
     val size: String = "",
     val dough: String = "",
     val sauce: String = "",
-    val toppings: List<String> = listOf()
+    val toppings: List<String> = listOf(),
 ) {
 
     class Builder {

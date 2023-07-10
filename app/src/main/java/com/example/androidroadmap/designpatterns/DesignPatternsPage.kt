@@ -17,13 +17,13 @@ import com.example.androidroadmap.core.widgets.Title
 
 @Composable
 fun DesignPatternsPage(navController: NavHostController) {
-
     val listOfPages = listOf(
         Page("Factory Method", Routes.FACTORY_PAGE),
         Page("Abstract Factory", Routes.ABSTRACT_FACTORY_PAGE),
         Page("Builder", Routes.BUILDER_PAGE),
+        Page("Prototype", Routes.PROTOTYPE_PAGE),
+        Page("Singleton", Routes.SINGLETON_PAGE),
     )
-
 
     Scaffold { padding ->
 
@@ -31,7 +31,7 @@ fun DesignPatternsPage(navController: NavHostController) {
             Modifier
                 .fillMaxWidth()
                 .padding(padding),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Title(text = stringResource(id = R.string.design_patterns))
             MenuList(listOfPages = listOfPages, navController = navController)

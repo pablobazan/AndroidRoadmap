@@ -17,11 +17,10 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun AbstractFactory() {
-
     Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
         Column(
             Modifier.padding(top = 20.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             MacWidgetFactory().createButton().ShowComposable()
             LinuxWidgetFactory().createButton().ShowComposable()
@@ -58,9 +57,12 @@ interface Widget {
 class MacButton : Widget {
     @Composable
     override fun ShowComposable() {
-        TextButton(modifier = Modifier
-            .background(Color.Green)
-            .fillMaxWidth(0.8f), onClick = { /*TODO*/ }) {
+        TextButton(
+            modifier = Modifier
+                .background(Color.Green)
+                .fillMaxWidth(0.8f),
+            onClick = { /*TODO*/ },
+        ) {
             Text(text = "Mac Button")
         }
     }
@@ -69,9 +71,12 @@ class MacButton : Widget {
 class LinuxButton : Widget {
     @Composable
     override fun ShowComposable() {
-        TextButton(modifier = Modifier
-            .background(Color.Red)
-            .fillMaxWidth(0.8f), onClick = { /*TODO*/ }) {
+        TextButton(
+            modifier = Modifier
+                .background(Color.Red)
+                .fillMaxWidth(0.8f),
+            onClick = { /*TODO*/ },
+        ) {
             Text(text = "Linux Button")
         }
     }

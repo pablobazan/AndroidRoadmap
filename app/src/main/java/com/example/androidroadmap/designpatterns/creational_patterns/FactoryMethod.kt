@@ -19,13 +19,12 @@ import com.example.androidroadmap.core.widgets.ButtonMenu
 
 @Composable
 fun FactoryMethod() {
-
     var showModal by remember { mutableStateOf(false) }
 
     Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
         Column(
             Modifier.padding(top = 20.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             ButtonMenu(
                 text = "Show modal",
@@ -77,7 +76,7 @@ class LinuxModal : Modal {
             AlertDialog(
                 title = { Text("Linux Modal") },
                 onDismissRequest = { onDismiss() },
-                buttons = {}
+                buttons = {},
             )
         }
     }
@@ -90,7 +89,7 @@ class MacModal : Modal {
             AlertDialog(
                 title = { Text("Mac Modal") },
                 onDismissRequest = { onDismiss() },
-                buttons = {}
+                buttons = {},
             )
         }
     }
