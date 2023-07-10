@@ -34,16 +34,15 @@ import com.example.androidroadmap.core.widgets.Title
 
 @Composable
 fun ComposeAnimationsPage() {
-
     Scaffold { padding ->
         Column(
             Modifier
                 .fillMaxWidth()
                 .padding(padding),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Title(
-                text = stringResource(id = R.string.title_activity_jetpack_compose_catalog)
+                text = stringResource(id = R.string.title_activity_jetpack_compose_catalog),
             )
             Spacer(modifier = Modifier.fillMaxHeight(0.05f))
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -54,7 +53,6 @@ fun ComposeAnimationsPage() {
                 SizeAnimation()
                 Spacer(modifier = Modifier.fillMaxHeight(0.05f))
                 VisibilityAnimation()
-
             }
         }
     }
@@ -69,16 +67,18 @@ fun ColorAnimation() {
         //        finishedListener = { firstColor = !firstColor }
     )
 
-
     Column(
-        modifier = Modifier, horizontalAlignment = Alignment.CenterHorizontally
+        modifier = Modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(text = "Click para cambiar de color")
         Spacer(modifier = Modifier.fillMaxHeight(0.05f))
-        Box(modifier = Modifier
-            .size(100.dp)
-            .background(realColor)
-            .clickable { firstColor = !firstColor })
+        Box(
+            modifier = Modifier
+                .size(100.dp)
+                .background(realColor)
+                .clickable { firstColor = !firstColor },
+        )
     }
 }
 
@@ -90,16 +90,18 @@ fun SizeAnimation() {
         animationSpec = tween(durationMillis = 450),
     )
 
-
     Column(
-        modifier = Modifier, horizontalAlignment = Alignment.CenterHorizontally
+        modifier = Modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(text = "Click para cambiar de tamaño")
         Spacer(modifier = Modifier.fillMaxHeight(0.05f))
-        Box(modifier = Modifier
-            .size(size)
-            .background(Color.DarkGray)
-            .clickable { smallSize = !smallSize })
+        Box(
+            modifier = Modifier
+                .size(size)
+                .background(Color.DarkGray)
+                .clickable { smallSize = !smallSize },
+        )
     }
 }
 
@@ -107,10 +109,9 @@ fun SizeAnimation() {
 fun VisibilityAnimation() {
     var isVisible by rememberSaveable { mutableStateOf(true) }
 
-
-
     Column(
-        modifier = Modifier, horizontalAlignment = Alignment.CenterHorizontally
+        modifier = Modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(text = "Click para ocultar o mostrar")
         Spacer(modifier = Modifier.fillMaxHeight(0.05f))
@@ -122,9 +123,8 @@ fun VisibilityAnimation() {
             Box(
                 modifier = Modifier
                     .size(50.dp)
-                    .background(Color.Green)
+                    .background(Color.Green),
             )
         }
-
     }
 }

@@ -15,16 +15,13 @@ import com.example.androidroadmap.core.Routes
 import com.example.androidroadmap.core.widgets.MenuList
 import com.example.androidroadmap.core.widgets.Title
 
-
 @Composable
 fun ComposePage(navController: NavHostController) {
-
     val listOfPages = listOf(
         Page("Componentes", Routes.COMPONENTS_PAGE),
         Page("Animaciones", Routes.ANIMATIONS_PAGE),
 
     )
-
 
     Scaffold { padding ->
 
@@ -32,7 +29,7 @@ fun ComposePage(navController: NavHostController) {
             Modifier
                 .fillMaxWidth()
                 .padding(padding),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Title(text = stringResource(id = R.string.solid))
             MenuList(listOfPages = listOfPages, navController = navController)
