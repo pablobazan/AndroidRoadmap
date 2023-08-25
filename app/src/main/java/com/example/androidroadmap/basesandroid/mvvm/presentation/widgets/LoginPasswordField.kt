@@ -42,7 +42,7 @@ fun LoginPasswordField(password: String, onTextChanged: (String) -> Unit) {
             text = "Password",
             color = Color.White,
             fontSize = 16.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
         )
         TextField(
             password,
@@ -55,7 +55,7 @@ fun LoginPasswordField(password: String, onTextChanged: (String) -> Unit) {
                 backgroundColor = Color(0xFFD8D8DD),
                 placeholderColor = Color(0xFFA09F99),
                 focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
+                unfocusedIndicatorColor = Color.Transparent,
             ),
             singleLine = true,
             maxLines = 1,
@@ -75,7 +75,7 @@ fun LoginPasswordField(password: String, onTextChanged: (String) -> Unit) {
             } else {
                 PasswordVisualTransformation()
             },
-            )
+        )
     }
 }
 
@@ -86,7 +86,7 @@ fun DefaultPreview() {
         modifier = Modifier
             .background(Color.Black)
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(16.dp),
     ) {
         Spacer(modifier = Modifier.fillMaxHeight(0.1f))
         LoginPasswordField("") {}

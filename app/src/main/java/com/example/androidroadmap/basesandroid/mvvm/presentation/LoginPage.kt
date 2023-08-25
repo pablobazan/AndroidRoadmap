@@ -38,7 +38,6 @@ import com.example.androidroadmap.basesandroid.mvvm.presentation.widgets.LoginPa
 
 @Composable
 fun LoginPage(loginViewModel: LoginViewModel) {
-
     /**
      * Figma design: https://www.figma.com/file/pIv2UEL3Ac4TbKkshmC82Q/Real-Estate-App-%7C-Login-and-Signup-screen-%7C-Ui-Design-(Community)?node-id=1%3A11&t=CL0EYzJ8pz6j0yMn-0
      */
@@ -47,7 +46,7 @@ fun LoginPage(loginViewModel: LoginViewModel) {
     Background()
     Scaffold(
         modifier = Modifier.padding(horizontal = 28.dp),
-        backgroundColor = Color.Transparent
+        backgroundColor = Color.Transparent,
     ) { padding ->
         Content(loginViewModel = loginViewModel, padding = padding)
     }
@@ -56,12 +55,10 @@ fun LoginPage(loginViewModel: LoginViewModel) {
 
 @Composable
 private fun Content(loginViewModel: LoginViewModel, padding: PaddingValues) {
-
     val email: String by loginViewModel.email.observeAsState(initial = "")
     val password: String by loginViewModel.password.observeAsState(initial = "")
     val isLoginEnable: Boolean by loginViewModel.isLoginEnable.observeAsState(initial = false)
     val isRememberMe: Boolean by loginViewModel.rememberMeSwitch.observeAsState(initial = false)
-
 
     Column(
         modifier = Modifier
@@ -70,14 +67,14 @@ private fun Content(loginViewModel: LoginViewModel, padding: PaddingValues) {
             .padding(padding),
         horizontalAlignment = Alignment.Start,
 
-        ) {
+    ) {
         Spacer(modifier = Modifier.fillMaxHeight(0.2f))
         Text(
             modifier = Modifier.align(alignment = Alignment.CenterHorizontally),
             text = "Login",
             color = Color.White,
             fontSize = 30.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
         )
         Spacer(modifier = Modifier.fillMaxHeight(0.05f))
         LoginEmailField(email = email, onTextChanged = { loginViewModel.onLoginChanged(it, password) })
@@ -87,7 +84,6 @@ private fun Content(loginViewModel: LoginViewModel, padding: PaddingValues) {
         LoginSwitch(checked = isRememberMe, onSwitchChange = { loginViewModel.onRememberMeSwitchChanged(it) })
         Spacer(modifier = Modifier.fillMaxHeight(0.08f))
         LoginButton(isLoginEnable = isLoginEnable, loginViewModel)
-
     }
 }
 
@@ -96,7 +92,7 @@ private fun Loading() {
     Box(
         Modifier
             .fillMaxSize()
-            .background(Color((0x4FFFFFFF)))
+            .background(Color((0x4FFFFFFF))),
 
     ) {
         CircularProgressIndicator(
@@ -119,8 +115,8 @@ fun LoginButton(isLoginEnable: Boolean, loginViewModel: LoginViewModel) {
             backgroundColor = Color(0xFF0ACF83),
             disabledBackgroundColor = Color.Gray,
             contentColor = Color.White,
-            disabledContentColor = Color.White
-        )
+            disabledContentColor = Color.White,
+        ),
     ) {
         Text(text = "Log In")
     }
@@ -128,7 +124,6 @@ fun LoginButton(isLoginEnable: Boolean, loginViewModel: LoginViewModel) {
 
 @Composable
 fun LoginSwitch(checked: Boolean, onSwitchChange: (Boolean) -> Unit) {
-
     Row(modifier = Modifier, verticalAlignment = Alignment.CenterVertically) {
         Switch(
             modifier = Modifier
@@ -139,15 +134,15 @@ fun LoginSwitch(checked: Boolean, onSwitchChange: (Boolean) -> Unit) {
                 checkedThumbColor = Color(0xFF0ACF83),
                 uncheckedThumbColor = Color.White,
                 checkedTrackColor = Color(0xFFA09F99),
-                uncheckedTrackColor = Color(0xFFA09F99)
-            )
+                uncheckedTrackColor = Color(0xFFA09F99),
+            ),
         )
         Text(
             modifier = Modifier.weight(30F, fill = true),
             text = "Remember me",
             color = Color(0xFFA09F99),
             fontSize = 12.sp,
-            fontWeight = FontWeight.W400
+            fontWeight = FontWeight.W400,
         )
         Spacer(modifier = Modifier.weight(25F))
         Text(
@@ -156,9 +151,8 @@ fun LoginSwitch(checked: Boolean, onSwitchChange: (Boolean) -> Unit) {
             color = Color(0xFFA09F99),
             fontSize = 12.sp,
             fontWeight = FontWeight.W400,
-            style = TextStyle(textDecoration = TextDecoration.Underline)
+            style = TextStyle(textDecoration = TextDecoration.Underline),
         )
-
     }
 }
 
@@ -179,7 +173,7 @@ fun Background() {
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
                 .fillMaxHeight(0.8f)
-                .background(brush = Brush.verticalGradient(listOf(Color.Transparent, Color.Black)))
+                .background(brush = Brush.verticalGradient(listOf(Color.Transparent, Color.Black))),
 
         )
         Box(
@@ -187,9 +181,8 @@ fun Background() {
                 .align(Alignment.TopCenter)
                 .fillMaxWidth()
                 .fillMaxHeight(0.8f)
-                .background(brush = Brush.verticalGradient(listOf(Color.Black, Color.Transparent)))
+                .background(brush = Brush.verticalGradient(listOf(Color.Black, Color.Transparent))),
 
         )
-
     }
 }

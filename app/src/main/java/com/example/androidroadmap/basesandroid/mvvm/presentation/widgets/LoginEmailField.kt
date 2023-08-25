@@ -24,14 +24,13 @@ import androidx.compose.ui.unit.sp
 fun LoginEmailField(email: String, onTextChanged: (String) -> Unit) {
     val focusManager = LocalFocusManager.current
 
-
     Column(modifier = Modifier) {
         Text(
             modifier = Modifier.padding(start = 2.dp, bottom = 10.dp),
             text = "Email",
             color = Color.White,
             fontSize = 16.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
         )
         TextField(
             value = email,
@@ -43,16 +42,16 @@ fun LoginEmailField(email: String, onTextChanged: (String) -> Unit) {
             singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email, imeAction = ImeAction.Next),
             keyboardActions = KeyboardActions(
-                onNext = { focusManager.moveFocus(FocusDirection.Down) }
+                onNext = { focusManager.moveFocus(FocusDirection.Down) },
             ),
             colors = TextFieldDefaults.textFieldColors(
                 textColor = Color(0xFFA09F99),
                 backgroundColor = Color(0xFFD8D8DD),
                 placeholderColor = Color(0xFFA09F99),
                 focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
+                unfocusedIndicatorColor = Color.Transparent,
             ),
 
-            )
+        )
     }
 }
